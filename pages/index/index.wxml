@@ -1,22 +1,19 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-
-    <button bindtap="queryCardList"> 获取卡券列表 </button>
-    <button bindtap="addCard"> 添加卡券 </button>
-        <button bindtap="editAddress"> 编辑收货地址 </button>
-        <button bindtap="map1"> 选择地图位置 </button>
-        <button bindtap="scancode"> 扫码 </button>
- <button bindtap="selectInovice"> 选择发票抬头 </button>
-  <button bindtap="selectInoviceList"> 获取当前自己位置 </button>
-
+    <text selectable="true" class="user-motto">{{motto}}</text>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+    <button bindtap="bindViewTap"> 获取openID </button>
+    <button bindtap="queryCardList"> 获取卡券列表 </button>
+    <button bindtap="addCard"> 添加卡券 </button>
+    <button bindtap="editAddress"> 编辑收货地址 </button>
+    <button bindtap="map1"> 选择地图位置 </button>
+    <button bindtap="scancode"> 扫码 </button>
+    <button bindtap="selectInovice"> 选择发票抬头 </button>
+    <button bindtap="selectInoviceList"> 获取当前自己位置 </button>
   </view>
+
+
 </view>

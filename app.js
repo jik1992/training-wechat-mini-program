@@ -68,9 +68,9 @@ App({
 
                           var iv = res.iv;
                           var encryptedData = res.encryptedData;
-                          console.info("code", code)
-                          console.info("iv", iv)
-                          console.info("encryptedData", encryptedData)
+                          wx.setStorageSync("code", code)
+                          wx.setStorageSync("iv", iv)
+                          wx.setStorageSync("encryptedData", encryptedData)
                         }
                       })
                     }

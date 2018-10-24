@@ -4,16 +4,33 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    motto: 'openid',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // });
+    let that=this;
+    wx.request({
+      url: 'http://test.mine.api.logic.alorvalley.com/api/card/member/getOauthUserInfo',
+      data: {
+        k: 'wx7f136ddff110168c',
+        v: '99df63c93ca86781802f45cd211c1b44',
+        encryptedData: wx.getStorageSync("encryptedData"),
+        code: wx.getStorageSync("code"),
+        iv: wx.getStorageSync("iv")
+      },
+      success(res) {
+        that.setData({
+          motto: res.data.data[0].openId
+        })
+      }
     })
+
   },
   onLoad: function() {
     if (app.globalData.userInfo) {
@@ -50,6 +67,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+
+   
+
   },
   queryCardList: function(e) {
     //打开会员卡
@@ -97,15 +117,15 @@ Page({
       onlyFromCamera: false,
       scanType: ['barCode', 'qrCode'],
       success: function(e) {
-console.info(e)
+        console.info(e)
       }
     })
 
   },
-  selectInovice:function(){
+  selectInovice: function() {
     wx.chooseInvoiceTitle()
   },
-  selectInoviceList:function () {
+  selectInoviceList: function() {
     wx.getLocation({
       type: 'gcj02', //返回可以用于wx.openLocation的经纬度
       success(res) {
