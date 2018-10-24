@@ -12,6 +12,8 @@
         <button bindtap="editAddress"> 编辑收货地址 </button>
         <button bindtap="map1"> 选择地图位置 </button>
         <button bindtap="scancode"> 扫码 </button>
+ <button bindtap="selectInovice"> 选择发票抬头 </button>
+  <button bindtap="selectInoviceList"> 获取当前自己位置 </button>
 
   </view>
   <view class="usermotto">
